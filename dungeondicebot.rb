@@ -1,7 +1,8 @@
 require 'telegram/bot'
 require_relative './classes.rb'
 token = '1275379380:AAEfkC8K31fMnVPdeEYMSX7hOFdQR-Asecs'
-#
+
+# To test
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
     crbl = Criticblunder.new

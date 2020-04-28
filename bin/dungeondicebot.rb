@@ -1,7 +1,8 @@
 require 'telegram/bot'
 require_relative './classes.rb'
 token = '1275379380:AAEfkC8K31fMnVPdeEYMSX7hOFdQR-Asecs'
-#
+
+# To test
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
     crbl = Criticblunder.new
@@ -37,7 +38,7 @@ Telegram::Bot::Client.run(token) do |bot|
           end
         end
       end
-    elsif op.length == 3 and op[1] == "add" or op[1] == "sub" or op[1] == "mul" or op[1] == "div"
+    elsif op.length == 3 and op[1] == 'add' or op[1] == 'sub' or op[1] == 'mul' or op[1] == 'div'
         dice = op[0].split(/(d)/)
         if dice[0] == '/' and dice[1] == 'd' and crbl.accepted_dices(dice[2].to_i) and dice.length == 3
           mult_op = op[2].split(/(tm)/)
@@ -47,7 +48,7 @@ Telegram::Bot::Client.run(token) do |bot|
             bot.api.send_message(chat_id: message.chat.id, text: roll.roll_with_operation(dice[2].to_i, op[2].to_i, op[1]))
           end
         end
-      elsif compare.length == 3 and compare[1] == "smt" or compare[1] == "bgt"
+      elsif compare.length == 3 and compare[1] == 'smt' or compare[1] == 'bgt'
         dice = compare[0].split(/(d)/)
         if dice[0] == '/' and dice[1] == 'd' and crbl.accepted_dices(dice[2].to_i) and dice.length == 3
           compare_multiple = compare[2].split(/(tm)/)
